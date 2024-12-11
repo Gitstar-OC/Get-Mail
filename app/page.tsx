@@ -35,7 +35,7 @@ export default function Home() {
           </a>{" "}
           plugin you can use to send email when something happens.
         </p>
-        <form onSubmit={handleSubmit} className="relative z-10 mt-8">
+        <form onSubmit={handleSubmit} className="relative z-10 mt-8 mx-14">
           <div className="relative flex-grow">
             <div className="space-y-2">
               <Label htmlFor="input" className="text-slate-300">
