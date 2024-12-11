@@ -52,7 +52,7 @@ export default function Home() {
                 <Button
                   // variant="secondary"
                   type="submit"
-                  className="relative bg-none bg-opacity-0 overflow-hidden p-2 group hover:scale-105 transition-transform"
+                  className="relative overflow-hidden p-2 group hover:scale-105 transition-transform"
                 >
                   <span className="sr-only">Send</span>
                   <div className="relative w-6 h-6 flex items-center justify-center">
