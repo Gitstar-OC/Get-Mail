@@ -5,14 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast"
-import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/hooks/use-toast";
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const { toast } = useToast()
+  const { toast } = useToast();
 
-  
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -24,13 +22,13 @@ export default function Home() {
       const data = await response.json();
       if (response.ok) {
         toast({
-          title: 'Success',
+          // title: 'Success',
           description: data.message,
         });
       } else {
         toast({
-          title: 'Error',
-          description: data.error,
+          // title: 'Error',
+          description: data.error || data.details,
           variant: 'destructive',
         });
       }
@@ -49,7 +47,6 @@ export default function Home() {
       <div className=" mx-auto p-4">
         <h1 className="relative z-10 text-4xl md:text-7xl xl:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-primary-foreground text-center font-sans font-bold">
           <video src="https://resend.com/static/landing-page/3d-integrate-morning.mp4" muted loop autoPlay className="z-10 rounded-lg md:rounded-3xl xl:rounded-[2rem] w-12 h-12 md:w-20 md:h-20 xl:w-24 xl:h-24 mb-4 inline-block mr-4 relative" />
-          {/* <video src="/3d-integrate-morning.mp4" loop autoPlay className="z-10 rounded-3xl w-20 h-20 mb-4 inline-block mr-4 relative"/> */}
           Get Mail
         </h1>
         <p className="text-slate-300/90 max-w-lg mx-auto my-4 text-lg md:text-xl text-center relative z-10">
@@ -81,15 +78,6 @@ export default function Home() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <Button
-                  onClick={() => {
-                    toast({
-                      title: "Scheduled: Catch up ",
-                      description: "Friday, February 10, 2023 at 5:57 PM",
-                      action: (
-                        <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-                      ),
-                    })
-                  }}
                   type="submit"
                   className="border-2 border-solid border-white relative overflow-hidden p-2 group hover:scale-105 transition-transform"
                 >
@@ -123,9 +111,7 @@ export default function Home() {
           </div>
         </form>
       </div>
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </div>
   );
 }
-
-// https://resend.com/static/landing-page/3d-integrate-morning.mp4
