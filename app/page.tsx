@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Input } from "@/components/ui/input";
-import { Mail, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast"
@@ -29,7 +29,7 @@ const handleSubmit = (event: React.FormEvent) => {
   return (
     <div className="h-screen w-full bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
       <div className="max-w-2xl mx-auto p-4">
-        <h1 className="relative z-10 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-yellow-700 text-center font-sans font-bold">
+        <h1 className="relative z-10 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-primary-foreground text-center font-sans font-bold">
           <video src="https://resend.com/static/landing-page/3d-integrate-morning.mp4" loop autoPlay className="z-10 rounded-3xl w-20 h-20 mb-4 inline-block mr-4 relative" />
           {/* <video src="/3d-integrate-morning.mp4" loop autoPlay className="z-10 rounded-3xl w-20 h-20 mb-4 inline-block mr-4 relative"/> */}
           Get Mail
@@ -39,7 +39,7 @@ const handleSubmit = (event: React.FormEvent) => {
           <a
             href="https://github.com/Hackclub-OC/Get-Mail"
             target="_blank"
-            className="relative before:content-[''] before:absolute before:left-[-0.1px] before:right-[-0.1px] before:h-full before:transition-transform before:duration-[0.6s] before:ease-[cubic-bezier(0.53,0.21,0,1)] text-slate-200 hover:text-white before:origin-bottom before:bg-yellow-500 before:opacity-60 before:scale-y-[0.3] before:bottom-0 hover:before:scale-y-100"
+            className="relative before:content-[''] before:absolute before:left-[-0.1px] before:right-[-0.1px] before:h-full before:transition-transform before:duration-[0.6s] before:ease-[cubic-bezier(0.53,0.21,0,1)] text-slate-200 hover:text-white before:origin-bottom before:bg-primary-foreground before:opacity-60 before:scale-y-[0.3] before:bottom-0 hover:before:scale-y-100"
           >
             <span className="relative">Open Source</span>
           </a>{" "}
