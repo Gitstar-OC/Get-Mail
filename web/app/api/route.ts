@@ -82,3 +82,4 @@ return NextResponse.json({ message: 'Email sent successfully' });
     );
   }
 }
+}
