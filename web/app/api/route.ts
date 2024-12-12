@@ -67,7 +67,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: 'Email sent successfully' });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error:', error: any);
     return NextResponse.json(
       { error: 'Internal server error', details: error.message }, 
       { status: 500 }
