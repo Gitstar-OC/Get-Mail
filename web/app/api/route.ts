@@ -1,12 +1,10 @@
-// filepath: /web/app/api/route.ts
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!
-);
+const supabaseUrl =  process.env.SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -23,7 +21,7 @@ export async function POST(req: Request) {
   // Send email using Resend
   try {
     await resend.emails.send({
-      from: 'Your Name <no-reply@example.com>',
+      from: 'OC <no-reply@theme-verse.com>',
       to: email,
       subject: 'Welcome!',
       html: '<p>Thank you for signing up!</p>',
