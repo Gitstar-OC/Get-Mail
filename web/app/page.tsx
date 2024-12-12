@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Input } from "@/components/ui/input";
+import { BackgroundBeams } from "@/frontend/components/ui/background-beams";
+import { Input } from "@/frontend/components/ui/input";
 import { Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast"
-import { ToastAction } from "@/components/ui/toast"
+import { Button } from "@/frontend/components/ui/button";
+import { Label } from "@/frontend/components/ui/label";
+import { useToast } from "@/frontend/hooks/use-toast"
+import { ToastAction } from "@/frontend/components/ui/toast"
 
 export default function Home() {
   const [email, setEmail] = useState("");
