@@ -1,10 +1,11 @@
+// filepath: /web/app/api/route.ts
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!
 );
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
@@ -13,9 +14,10 @@ export async function POST(req: Request) {
   const { email } = await req.json();
 
   // Store email in Supabase
-  const { error } = await supabase.from('emails').insert({ email });
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  const { error: supabaseError } = await supabase.from('emails').insert({ email });
+  if (supabaseError) {
+    console.error('Supabase Error:', supabaseError);
+    return NextResponse.json({ error: 'Failed to store email' }, { status: 500 });
   }
 
   // Send email using Resend
@@ -27,7 +29,8 @@ export async function POST(req: Request) {
       html: '<p>Thank you for signing up!</p>',
     });
     return NextResponse.json({ message: 'Email sent successfully' });
-  } catch (error) {
-    return NextResponse.json({ error: error }, { status: 500 });
+  } catch (resendError) {
+    console.error('Resend Error:', resendError);
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
 }
