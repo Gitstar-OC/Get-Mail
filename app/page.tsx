@@ -28,13 +28,13 @@ const handleSubmit = (event: React.FormEvent) => {
 };
   return (
     <div className="h-screen w-full bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
-      <div className="max-w-2xl mx-auto p-4">
-        <h1 className="relative z-10 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-primary-foreground text-center font-sans font-bold">
-          <video src="https://resend.com/static/landing-page/3d-integrate-morning.mp4" loop autoPlay className="z-10 rounded-3xl w-20 h-20 mb-4 inline-block mr-4 relative" />
+      <div className=" mx-auto p-4">
+        <h1 className="relative z-10 text-4xl md:text-7xl xl:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-primary-foreground text-center font-sans font-bold">
+          <video src="https://resend.com/static/landing-page/3d-integrate-morning.mp4" muted loop autoPlay className="z-10 rounded-lg md:rounded-3xl xl:rounded-[2rem] w-12 h-12 md:w-20 md:h-20 xl:w-24 xl:h-24 mb-4 inline-block mr-4 relative" />
           {/* <video src="/3d-integrate-morning.mp4" loop autoPlay className="z-10 rounded-3xl w-20 h-20 mb-4 inline-block mr-4 relative"/> */}
           Get Mail
         </h1>
-        <p className="text-slate-300/90 max-w-lg mx-auto my-4 text-lg text-center relative z-10">
+        <p className="text-slate-300/90 max-w-lg mx-auto my-4 text-lg md:text-xl text-center relative z-10">
           Simple {""}
           <a
             href="https://github.com/Hackclub-OC/Get-Mail"
@@ -45,7 +45,7 @@ const handleSubmit = (event: React.FormEvent) => {
           </a>{" "}
           plugin you can use to send email when something happens.
         </p>
-        <form onSubmit={handleSubmit} className="relative z-10 mt-8 mx-14">
+        <form onSubmit={handleSubmit} className="relative z-10 mt-8 md:mx-14">
           <div className="relative flex-grow">
             <div className="space-y-2">
               <Label htmlFor="input" className="text-slate-300">
@@ -73,7 +73,7 @@ const handleSubmit = (event: React.FormEvent) => {
                     })
                   }}
                   type="submit"
-                  className="relative overflow-hidden p-2 group hover:scale-105 transition-transform"
+                  className="border-2 border-solid border-white relative overflow-hidden p-2 group hover:scale-105 transition-transform"
                 >
                   <span className="sr-only">Send</span>
                   <div className="relative w-6 h-6 flex items-center justify-center">
