@@ -65,11 +65,19 @@ export async function POST(req: Request) {
     //   html: '<p>Thank you for signing up!</p>',
     // });
 
-    return NextResponse.json({ message: 'Email sent successfully' });
-  } catch (error) {
-    console.error('Error:', error: any);
+// ...
+
+return NextResponse.json({ message: 'Email sent successfully' });
+} catch (error) {
+  console.error('Error:', error);
+  if (error instanceof Error) {
     return NextResponse.json(
       { error: 'Internal server error', details: error.message }, 
+      { status: 500 }
+    );
+  } else {
+    return NextResponse.json(
+      { error: 'Internal server error', details: 'Unknown error' }, 
       { status: 500 }
     );
   }
