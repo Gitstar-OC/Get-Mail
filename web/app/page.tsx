@@ -13,19 +13,37 @@ export default function Home() {
   const { toast } = useToast()
 
   
-const handleSubmit = (event: React.FormEvent) => {
-  event.preventDefault();
-  toast({
-    title: "Scheduled: Catch up",
-    description: "Friday, February 10, 2023 at 5:57 PM",
-    action: (
-      <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-    ),
-  });
-  console.log("Submitting email:", email);
-  // Reset email field after submission
-  // setEmail("");
-};
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('/api', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        toast({
+          title: 'Success',
+          description: data.message,
+        });
+      } else {
+        toast({
+          title: 'Error',
+          description: data.error,
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: `${error}`,
+        variant: 'destructive',
+      });
+    }
+    setEmail('');
+  };
+
   return (
     <div className="h-screen w-full bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
       <div className=" mx-auto p-4">

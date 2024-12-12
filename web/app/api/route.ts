@@ -30,8 +30,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         html: '<p>Thank you for signing up!</p>',
       });
       res.status(200).json({ message: 'Email sent successfully' });
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to send email' });
+    } catch (error) {
+      res.status(500).json({ error: error });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
