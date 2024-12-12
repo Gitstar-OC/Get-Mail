@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+// import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
