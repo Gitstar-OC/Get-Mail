@@ -5,33 +5,43 @@ import { Input } from "@/components/ui/input";
 import { Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast"
+import { ToastAction } from "@/components/ui/toast"
 
 export default function Home() {
   const [email, setEmail] = useState("");
+  const { toast } = useToast()
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Implement backend submission logic
-    console.log("Submitting email:", email);
-    // Reset email field after submission
-    setEmail("");
-  };
-
+  
+const handleSubmit = (event: React.FormEvent) => {
+  event.preventDefault();
+  toast({
+    title: "Scheduled: Catch up",
+    description: "Friday, February 10, 2023 at 5:57 PM",
+    action: (
+      <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+    ),
+  });
+  console.log("Submitting email:", email);
+  // Reset email field after submission
+  // setEmail("");
+};
   return (
     <div className="h-screen w-full bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
       <div className="max-w-2xl mx-auto p-4">
-        <h1 className="relative z-10 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 text-center font-sans font-bold">
-          <Mail size={72} className="inline-block mb-4 mr-4 text-gray-300 " />
-          Get a Mail
+        <h1 className="relative z-10 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-yellow-700 text-center font-sans font-bold">
+          <video src="https://resend.com/static/landing-page/3d-integrate-morning.mp4" loop autoPlay className="z-10 rounded-3xl w-20 h-20 mb-4 inline-block mr-4 relative" />
+          {/* <video src="/3d-integrate-morning.mp4" loop autoPlay className="z-10 rounded-3xl w-20 h-20 mb-4 inline-block mr-4 relative"/> */}
+          Get Mail
         </h1>
         <p className="text-slate-300/90 max-w-lg mx-auto my-4 text-lg text-center relative z-10">
-          A simple {""}
+          Simple {""}
           <a
             href="https://github.com/Hackclub-OC/Get-Mail"
             target="_blank"
-            className="relative before:content-[''] before:absolute before:left-[-0.1px] before:right-[-0.1px] before:h-full before:transition-transform before:duration-[0.6s] before:ease-[cubic-bezier(0.53,0.21,0,1)] text-slate-200 hover:text-white before:origin-bottom before:bg-blue-600 before:opacity-60 before:scale-y-[0.3] before:bottom-0 hover:before:scale-y-100"
+            className="relative before:content-[''] before:absolute before:left-[-0.1px] before:right-[-0.1px] before:h-full before:transition-transform before:duration-[0.6s] before:ease-[cubic-bezier(0.53,0.21,0,1)] text-slate-200 hover:text-white before:origin-bottom before:bg-yellow-500 before:opacity-60 before:scale-y-[0.3] before:bottom-0 hover:before:scale-y-100"
           >
-            <span className="relative">open source</span>
+            <span className="relative">Open Source</span>
           </a>{" "}
           plugin you can use to send email when something happens.
         </p>
@@ -48,9 +58,20 @@ export default function Home() {
                   className="flex-1 relative z-10 text-white"
                   placeholder="Email"
                   type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <Button
-                  // variant="secondary"
+                  onClick={() => {
+                    toast({
+                      title: "Scheduled: Catch up ",
+                      description: "Friday, February 10, 2023 at 5:57 PM",
+                      action: (
+                        <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+                      ),
+                    })
+                  }}
                   type="submit"
                   className="relative overflow-hidden p-2 group hover:scale-105 transition-transform"
                 >
@@ -88,3 +109,5 @@ export default function Home() {
     </div>
   );
 }
+
+// https://resend.com/static/landing-page/3d-integrate-morning.mp4
