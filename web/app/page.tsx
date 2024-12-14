@@ -63,15 +63,15 @@ export default function Home() {
         <form onSubmit={handleSubmit} className="relative z-10 mt-8 md:mx-14">
           <div className="relative flex-grow">
             <div className="space-y-2">
-              <Label htmlFor="input" className="text-slate-300">
-                Enter an email.
+              <Label htmlFor="input" className="text-slate-300 font-lg font-bold">
+                See how this works under the hood. 
               </Label>
 
               <div className="flex gap-2">
                 <Input
                   id="input"
                   className="flex-1 relative z-10 text-white"
-                  placeholder="Email"
+                  placeholder="Enter your email to get a mail."
                   type="email"
                   required
                   value={email}
