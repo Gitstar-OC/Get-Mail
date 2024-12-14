@@ -75,7 +75,7 @@ export async function POST(req: Request) {
       </div>
 
       <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #edf2f7;">
-        <p>Visit our website: <a href="https://get-mail.vercel.app" style="color: #4299e1;">Get-Mail.vercel.app</a></p>
+        <p>Visit our website: <a href="https://get-mail.vercel.app" style="color: #4299e1;">Get-Mail</a></p>
         <p>Have a great day! More Coming Soon ✨</p>
       </div>
     </div>`,
