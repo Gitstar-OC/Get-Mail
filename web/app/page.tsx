@@ -82,7 +82,7 @@ export default function Home() {
      <Button
       type="submit"
       disabled={isLoading}
-      className="border-2 border-solid border-white relative overflow-hidden p-2 group hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+      className="border-2 border-solid border-white relative overflow-hidden p-2 group hover:scale-105 transition-transform disabled:opacity-95 disabled:cursor-not-allowed"
     >
       <span className="sr-only">Send</span>
       <div className="relative w-6 h-6 flex items-center justify-center">
