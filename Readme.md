@@ -18,4 +18,6 @@ Etc. You get the idea.
 
 If you loved this simple idea, please give it a star ⭐ and share it with your friends.
 
---- 
+---
+
+Complete code is inside the web directory. 
