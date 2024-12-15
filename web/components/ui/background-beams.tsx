@@ -139,3 +139,6 @@ export const BackgroundBeams = React.memo(
 );
 
 BackgroundBeams.displayName = "BackgroundBeams";
+
+
+//  from-[#E131F3] via-[#59B2EA] to-[#A7FC8F]
