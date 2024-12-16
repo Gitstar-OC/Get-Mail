@@ -10,3 +10,7 @@ export const config = {
     '/(api|trpc)(.*)',
   ],
 };
+
+// export const config = {
+//   matcher: "/home/:path*",
+// };
