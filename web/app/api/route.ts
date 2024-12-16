@@ -15,7 +15,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const { email, isAuthFlow, name, profileUrl } = await req.json();
+    const { email, isAuthFlow, name} = await req.json();
 
     if (isAuthFlow) {
       // Auth flow
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
           auth_id: user.id,
           email: user.emailAddresses[0].emailAddress,
           name: user.firstName,
-          profile_url: user.profileUrl,
+          // profile_url: user.,
         })
         .select()
         .single();
