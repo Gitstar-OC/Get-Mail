@@ -1,6 +1,9 @@
 # Get Mail
 
+![Get Mail Homepage Image](https://cloud-2sb04vx1s-hack-club-bot.vercel.app/0screenshot_2024-12-16_163735.png)
+<!--
 ![Get Mail Homepage Image](https://cloud-dgdi91xpt-hack-club-bot.vercel.app/0image.png)
+-->
 
 This plugin / simple code allows you to send mail when something happens in your app. This is like an introduction to begineers to the world of backend development.
 
