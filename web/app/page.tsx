@@ -79,13 +79,13 @@ export default function Home() {
         <p >Sign in to perform various actions</p>
           <div className="flex space-x-4">
             
-            <SignInButton mode="modal" provider="github">
+            <SignInButton mode="modal" >
               <Button variant="outline" className="w-40">
                 <FaGithub className="mr-2" />
                 GitHub
               </Button>
             </SignInButton>
-            <SignInButton mode="modal" provider="google">
+            <SignInButton mode="modal" >
               <Button variant="outline" className="w-40">
                 <FaGoogle className="mr-2" />
                 Google
