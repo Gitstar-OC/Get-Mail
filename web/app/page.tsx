@@ -2,13 +2,13 @@
 import React, { useState, useEffect, Suspense } from "react";
 // import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Input } from "@/components/ui/input";
-import { Send, Loader2 } from 'lucide-react';
+import { Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -19,18 +19,17 @@ export default function Home() {
 
   useEffect(() => {
     if (user) {
-      router.push('/home');
+      router.push("/home");
     }
   }, [user, router]);
-
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch('/api', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
       const data = await response.json();
@@ -41,18 +40,18 @@ export default function Home() {
       } else {
         toast({
           description: data.error || data.details,
-          variant: 'destructive',
+          variant: "destructive",
         });
       }
     } catch (error) {
       toast({
-        title: 'Error',
+        title: "Error",
         description: `${error}`,
-        variant: 'destructive',
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
-      setEmail('');
+      setEmail("");
     }
   };
 
@@ -60,11 +59,17 @@ export default function Home() {
     <div className="h-screen w-full bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
       <div className="mx-auto p-4 max-w-2xl w-full">
         <h1 className="relative z-10 text-4xl md:text-7xl xl:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-primary-foreground text-center font-sans font-bold mb-8">
-          <video src="https://resend.com/static/landing-page/3d-integrate-morning.mp4" muted loop autoPlay className="z-10 rounded-lg md:rounded-3xl xl:rounded-[2rem] w-12 h-12 md:w-20 md:h-20 xl:w-24 xl:h-24 mb-4 inline-block mr-4 relative" />
+          <video
+            src="https://resend.com/static/landing-page/3d-integrate-morning.mp4"
+            muted
+            loop
+            autoPlay
+            className="z-10 rounded-lg md:rounded-3xl xl:rounded-[2rem] w-12 h-12 md:w-20 md:h-20 xl:w-24 xl:h-24 mb-4 inline-block mr-4 relative"
+          />
           Get Mail
         </h1>
         <p className="text-slate-300/90 max-w-lg mx-auto my-4 text-lg md:text-xl lg:text-2xl text-center relative z-10">
-          Simple {" "}
+          Simple{" "}
           <a
             href="https://github.com/Hackclub-OC/Get-Mail"
             target="_blank"
@@ -74,42 +79,47 @@ export default function Home() {
           </a>{" "}
           plugin you can use to send email when something happens.
         </p>
-        
-        <div className="flex relative z-10 flex-col items-center space-y-4 mt-8">
-        <p >Sign in to perform various actions</p>
-          <div className="flex space-x-4">
-            <Suspense >
-            <SignInButton mode="modal" >
-              <Button variant="outline" className="w-40">
-                <FaGithub className="mr-2" />
-                GitHub
-              </Button>
-            </SignInButton>
-            </Suspense>
-            <Suspense>
-            <SignInButton mode="modal" >
-              <Button variant="outline" className="w-40">
-                <FaGoogle className="mr-2" />
-                Google
-              </Button>
-            </SignInButton>
-            </Suspense>
-          </div>
-          </div>
-          
-          <div className="relative w-full sm:px-10 md:px-20 lg:px-36 text-center">
-            <hr className="border-t border-primary-foreground/30 my-8" />
-            <span className="px-2 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              OR
-            </span>
-          </div>
-        
 
-        <form onSubmit={handleSubmit} className="relative sm:px-10 md:px-20 lg:px-36 z-10 mt-8">
+        <div className="flex relative z-10 flex-col items-center space-y-4 mt-8">
+          <p>Sign in to perform various actions</p>
+          <div className="flex space-x-4">
+            <Button variant="outline" className="w-40">
+              <SignInButton mode="modal">
+                <span className="flex">
+                  <FaGithub className="mr-2" />
+                  GitHub
+                </span>
+              </SignInButton>
+            </Button>
+            <Button variant="outline" className="w-40">
+              <SignInButton>
+                <span className="flex">
+                  <FaGoogle className="mr-2" />
+                  Google
+                </span>
+              </SignInButton>
+            </Button>
+          </div>
+        </div>
+
+        <div className="relative w-full sm:px-10 md:px-20 lg:px-36 text-center">
+          <hr className="border-t border-primary-foreground/30 my-8" />
+          <span className="px-2 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            OR
+          </span>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="relative sm:px-10 md:px-20 lg:px-36 z-10 mt-8"
+        >
           <div className="relative flex-grow">
             <div className="space-y-2">
-              <Label htmlFor="input" className="text-slate-300 font-lg font-bold">
-                Know more about us. 
+              <Label
+                htmlFor="input"
+                className="text-slate-300 font-lg font-bold"
+              >
+                Know more about us.
               </Label>
 
               <div className="flex gap-2">
@@ -150,4 +160,3 @@ export default function Home() {
     </div>
   );
 }
-
