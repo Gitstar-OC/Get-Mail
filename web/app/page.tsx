@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 // import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Input } from "@/components/ui/input";
 import { Send, Loader2 } from 'lucide-react';
@@ -78,19 +78,22 @@ export default function Home() {
         <div className="flex relative z-10 flex-col items-center space-y-4 mt-8">
         <p >Sign in to perform various actions</p>
           <div className="flex space-x-4">
-            
+            <Suspense >
             <SignInButton mode="modal" >
               <Button variant="outline" className="w-40">
                 <FaGithub className="mr-2" />
                 GitHub
               </Button>
             </SignInButton>
+            </Suspense>
+            <Suspense>
             <SignInButton mode="modal" >
               <Button variant="outline" className="w-40">
                 <FaGoogle className="mr-2" />
                 Google
               </Button>
             </SignInButton>
+            </Suspense>
           </div>
           </div>
           
