@@ -96,7 +96,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className=" top-0 left-0 right-0 flex space-y-0">
+            <div className="flex">
                       {[...Array(80)].map((_, i) => (
                         <div key={i} className="h-[1px] w-[8px] bg-border mx-[2px]" />
                       ))}
