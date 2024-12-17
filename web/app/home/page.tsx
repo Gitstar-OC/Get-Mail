@@ -19,7 +19,7 @@
 //         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
 //           <li className="mb-2">
 //             Get started by editing{" "}
-//             <code className="bg-black/[.05] dark:bg-background/[.06] px-1 py-0.5 rounded font-semibold">
+//             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
 //               src/app/page.tsx
 //             </code>
 //             .
@@ -32,9 +32,10 @@
 //   );
 // }
 
-"use client";
 
-import { useAuth, SignInButton } from "@clerk/nextjs";
+'use client'
+
+import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Profile } from "@/components/Profile";
