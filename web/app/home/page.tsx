@@ -92,9 +92,15 @@ export default function Home() {
             <div className="text-center">
               <h2 className="text-3xl font-semibold mb-4 text-primary">Your Dashboard</h2>
               <p className="text-muted-foreground">
-                Here's an overview of what you can do with this.
+                Here&apos;s an overview of what you can do with this.
               </p>
             </div>
+
+            <div className=" top-0 left-0 right-0 flex space-y-0">
+                      {[...Array(80)].map((_, i) => (
+                        <div key={i} className="h-[1px] w-[8px] bg-border mx-[2px]" />
+                      ))}
+                    </div>
 
             <div className="space-y-0">
               {["Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon"].map((section, index) => (
