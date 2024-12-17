@@ -32,7 +32,6 @@
 //   );
 // }
 
-
 'use client'
 
 import { useAuth } from "@clerk/nextjs";
@@ -126,3 +125,8 @@ export default function Home() {
     </div>
   )
 }
+
+// features to add 
+// send up a simple email
+// delay an email (or schedule an email)
+// send up a follow up email
