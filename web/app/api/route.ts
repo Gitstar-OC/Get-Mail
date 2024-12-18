@@ -1,21 +1,11 @@
-import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { Resend } from 'resend';
-import { currentUser } from '@clerk/nextjs/server';
-
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
-
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error("Missing Supabase environment variables");
-}
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { NextResponse } from "next/server";
+import { resend } from "@/lib/resend";
+import { currentUser } from "@clerk/nextjs/server";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(req: Request) {
   try {
-    const { email, isAuthFlow, name} = await req.json();
+    const { email, isAuthFlow, name } = await req.json();
 
     if (isAuthFlow) {
       // Auth flow
@@ -105,7 +95,7 @@ export async function POST(req: Request) {
       if (emailError) {
         console.error("Email Storage Error:", emailError);
         return NextResponse.json(
-          { error: "Failed to store email", details: emailError.message },
+          { error: "Email already exists! ", details: emailError.message },
           { status: 500 }
         );
       }
@@ -135,7 +125,7 @@ export async function POST(req: Request) {
       });
 
       return NextResponse.json({
-        message: "Email subscription successful",
+        message: "Email sent successfully 🎉",
       });
     }
   } catch (error) {
@@ -151,3 +141,34 @@ export async function POST(req: Request) {
 }
 
 // show proper error message (email already sent)
+
+// import { NextResponse } from "next/server";
+// import { resend } from "@/lib/resend";
+
+// export async function POST(req: Request) {
+//   try {
+//     const { email, subject, html } = await req.json();
+
+//     if (!email || !subject || !html) {
+//       return NextResponse.json(
+//         { error: "Email, subject, and html content are required" },
+//         { status: 400 }
+//       );
+//     }
+
+//     await resend.emails.send({
+//       from: "Get Mail <no-reply@theme-verse.com>",
+//       to: email,
+//       subject,
+//       html,
+//     });
+
+//     return NextResponse.json({ message: "Email sent successfully" });
+//   } catch (error) {
+//     console.error("Error sending email:", error);
+//     return NextResponse.json(
+//       { error: "Failed to send email" },
+//       { status: 500 }
+//     );
+//   }
+// }
