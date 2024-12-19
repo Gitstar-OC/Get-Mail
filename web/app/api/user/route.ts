@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const userData = await req.json();
 
     // Validate required fields
-    const { auth_id, email, name, full_name, profile_picture, created_at } = userData;
+    const { auth_id, email, name } = userData;
     if (!auth_id || !email || !name) {
       return NextResponse.json(
         { error: "Missing required user data" },
