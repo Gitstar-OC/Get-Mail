@@ -8,14 +8,40 @@ import { useRouter } from "next/navigation";
 import { Email } from "@/components/Email";
 
 export default function Home() {
-  const { user } = useUser();
+  const { isSignedIn, user } = useUser();
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
+    if (isSignedIn && user) {
       router.push("/home");
+
+      // Prepare user data to send
+      const userData = {
+        auth_id: user.id,
+        email: user.emailAddresses[0]?.emailAddress,
+        name: user.firstName,
+        full_name: user.fullName,
+        profile_picture: user.imageUrl,
+        created_at: user.createdAt,
+      };
+
+      // Call the API to store user data
+      fetch("/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("API response:", data);
+        })
+        .catch((error) => {
+          console.error("API error:", error);
+        });
     }
-  }, [user, router]);
+  }, [isSignedIn, user, router]);
 
   return (
     <div className="h-screen w-full bg-neutral-950 relative flex flex-col items-center justify-center antialiased">

@@ -1,31 +1,27 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
-import { currentUser } from "@clerk/nextjs/server";
 import { resend } from "@/lib/resend";
 
-export async function POST() {
+export async function POST(req: Request) {
   try {
-    const user = await currentUser();
+    const userData = await req.json();
 
-    if (!user) {
-      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    // Validate required fields
+    const { auth_id, email, name, full_name, profile_picture, created_at } = userData;
+    if (!auth_id || !email || !name) {
+      return NextResponse.json(
+        { error: "Missing required user data" },
+        { status: 400 }
+      );
     }
 
-    const { id: auth_id, emailAddresses, firstName, imageUrl } = user;
-    const email = emailAddresses[0]?.emailAddress;
-
     // Upsert user data into Supabase
-    const { error } = await supabase.from("users").upsert({
-      auth_id,
-      email,
-      name: firstName,
-      profile_picture: imageUrl,
-    });
+    const { error } = await supabase.from("users").upsert(userData);
 
     if (error) {
       console.error("Supabase error:", error);
       return NextResponse.json(
-        { error: "Failed to store user data" },
+        { error: "Failed to store user data", details: error.message },
         { status: 500 }
       );
     }
@@ -35,14 +31,15 @@ export async function POST() {
       from: "Get Mail <no-reply@theme-verse.com>",
       to: email,
       subject: "Welcome to Get Mail!",
-      html: `<p>Hi ${firstName},</p><p>Welcome to Get Mail!</p>`,
+      html: `<p>Hi ${name},</p><p>Welcome to Get Mail!</p>`,
     });
 
     return NextResponse.json({ message: "User data stored and email sent" });
+
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error in /api/user:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Internal server error", details: `${error}` },
       { status: 500 }
     );
   }
