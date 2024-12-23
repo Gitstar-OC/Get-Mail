@@ -44,7 +44,7 @@ export const WarningMail = () => {
     } catch (error) {
       toast({
         title: "Error",
-        description: error.message,
+        description:  `${error}`, 
         variant: "destructive",
       });
     } finally {
