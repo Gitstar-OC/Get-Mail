@@ -48,7 +48,7 @@ export default function Home() {
       <div className="mx-auto p-4 max-w-2xl w-full">
         <h1 className="relative z-10 text-4xl md:text-7xl xl:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-primary-foreground text-center font-sans font-bold mb-8">
           <video
-            src="https://resend.com/static/landing-page/3d-integrate-morning.mp4"
+            src="https://resend.com/static/landing-page/3d-integrate-weekend.mp4"
             muted
             loop
             autoPlay
@@ -96,7 +96,7 @@ export default function Home() {
             OR
           </span>
         </div>
-        <Email />
+        <Email heading={"Know more about us!"} />
       </div>
       {/* <BackgroundBeams /> */}
     </div>

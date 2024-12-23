@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
-export function Email() {
+export function Email({heading}: {heading: string}) {
   const [email, setEmail] = useState("");
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +50,7 @@ export function Email() {
       <div className="relative flex-grow">
         <div className="space-y-2">
           <Label htmlFor="input" className="text-slate-300 font-lg font-bold">
-            Know more about us.
+            {heading}
           </Label>
 
           <div className="flex gap-2">

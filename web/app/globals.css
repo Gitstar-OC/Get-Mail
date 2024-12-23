@@ -42,7 +42,9 @@ body {
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
-    --primary-foreground: 47.9 95.8% 53.1%;
+    /* --primary-foreground: 47.9 95.8% 53.1%; */
+    --primary-foreground: 188.7 94.5% 42.7%;
+    
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
@@ -51,7 +53,8 @@ body {
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 24.9%;
+    --border: 0 0% 44.9%;
+    /* --border: 47.9 95.8% 13.1%; */
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
