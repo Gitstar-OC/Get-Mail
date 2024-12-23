@@ -66,7 +66,7 @@ export function Email({heading}: {heading: string}) {
             <Button
               variant="ghost"
               disabled={isLoading}
-              className="border-2 border-solid border-white relative overflow-hidden p-2 group hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+              className="border-2 border-solid border-cyan-500 relative overflow-hidden p-2 group hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="sr-only">Send</span>
               <div className="relative w-6 h-6 flex items-center justify-center">

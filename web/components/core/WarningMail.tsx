@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MailWarning  } from "lucide-react";
+import { MailWarning } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import {
   Tooltip,
@@ -9,10 +9,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useToast } from "@/hooks/use-toast";
 
 export const WarningMail = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useUser();
+  const { toast } = useToast();
 
   const handleAction = async () => {
     setIsLoading(true);
@@ -28,14 +30,23 @@ export const WarningMail = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to perform action");
-      }
       const data = await response.json();
-      alert(data.message);
+
+      if (response.ok) {
+        toast({
+          title: "Success",
+          description: data.message,
+          variant: "default",
+        });
+      } else {
+        throw new Error(data.error || "Failed to send email");
+      }
     } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred while performing the action");
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -43,7 +54,7 @@ export const WarningMail = () => {
 
   return (
     <div className="p-8 bg-card rounded-lg flex flex-col items-center text-center">
-      <MailWarning  className="text-red-500 h-12 w-12 mb-4 text-primary" />
+      <MailWarning className="text-red-500 h-12 w-12 mb-4 text-primary" />
       <h3 className="font-medium mb-2 text-foreground text-xl">
         Send Warning Email
       </h3>
@@ -53,14 +64,13 @@ export const WarningMail = () => {
         someone log in to your account.
       </p>
 
-
       <TooltipProvider delayDuration={0}>
         <Tooltip>
           <TooltipTrigger>
             <button
               onClick={handleAction}
               disabled={isLoading}
-              className="px-4 py-2 text-primary-foreground rounded-md bg-gradient-to-r from-red-500 to-red-700 hover:scale-105 active:scale-95 transition-transform shadow-lg"
+              className="px-4 py-2 text-white rounded-md bg-gradient-to-r from-red-500 to-red-700 hover:scale-105 active:scale-95 transition-transform shadow-lg"
             >
               {isLoading ? "Sending..." : "Send Warning"}
             </button>

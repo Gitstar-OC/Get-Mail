@@ -71,21 +71,12 @@ export async function POST(req: Request) {
         break;
       case "schedule":
         await resend.emails.send({
-          from: "no-reply@theme-verse.com",
+          from: "Get Mail <no-reply@theme-verse.com>",  
           to: email,
-          subject: "Warning: Action Required",
-          html: "<p>This is a warning email. Please take necessary action.</p>",
+          subject: "Scheduling Mail",
+          html: "<p>This is a email scheduled 30 seconds ago!</p>",
         });
-        message = "Warning email sent successfully";
-        break;
-      case "quick":
-        await resend.emails.send({
-          from: "no-reply@theme-verse.com",
-          to: email,
-          subject: "Warning: Action Required",
-          html: "<p>This is a warning email. Please take necessary action.</p>",
-        });
-        message = "Warning email sent successfully";
+        message = "Scheduled email sent successfully";
         break;
     }
 
