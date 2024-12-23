@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-// import { BackgroundBeams } from "@/components/ui/background-beams";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Button } from "@/components/ui/button";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import { FaGithub, FaGoogle } from "react-icons/fa";
@@ -80,7 +80,7 @@ export default function Home() {
               </SignInButton>
             </Button>
             <Button variant="outline" className="w-40">
-              <SignInButton>
+              <SignInButton mode="modal">
                 <span className="flex">
                   <FaGoogle className="mr-2" />
                   Google
@@ -98,7 +98,7 @@ export default function Home() {
         </div>
         <Email heading={"Know more about us!"} />
       </div>
-      {/* <BackgroundBeams /> */}
+      <BackgroundBeams />
     </div>
   );
 }
