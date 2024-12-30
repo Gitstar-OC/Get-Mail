@@ -26,40 +26,62 @@ export function CodeWrapper({
         <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
         <p className="text-muted-foreground">{description}</p>
       </div>
-      
+
       <Tabs defaultValue="preview" className="space-y-4">
-        <TabsList className="w-full justify-start">
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="client">Client Code</TabsTrigger>
-          {serverCode && <TabsTrigger value="server">Server Code</TabsTrigger>}
+        <TabsList className="w-full justify-start bg-inherit border-b rounded-none">
+          <TabsTrigger
+            className="relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary"
+            value="preview"
+          >
+            Preview
+          </TabsTrigger>
+          <TabsTrigger
+            className="relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary"
+            value="client"
+          >
+            Client Code
+          </TabsTrigger>
+          {serverCode && (
+            <TabsTrigger
+              className="relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary"
+              value="server"
+            >
+              Server Code
+            </TabsTrigger>
+          )}
         </TabsList>
 
         <TabsContent value="preview" className="p-4  rounded-lg">
           {component}
         </TabsContent>
 
-        <TabsContent value="client">
-          <SyntaxHighlighter
-            language="typescript"
-            style={vscDarkPlus}
-            className="rounded-lg"
-          >
-            {clientCode}
-          </SyntaxHighlighter>
+        <TabsContent value="client" className="text">
+          <div className="max-h-[500px] overflow-y-auto ">
+            <SyntaxHighlighter
+              language="typescript"
+              style={vscDarkPlus}
+              className="rounded-lg "
+            >
+              {clientCode}
+            </SyntaxHighlighter>
+          </div>
         </TabsContent>
 
         {serverCode && (
           <TabsContent value="server">
-            <SyntaxHighlighter
-              language="typescript" 
-              style={vscDarkPlus}
-              className="rounded-lg"
-            >
-              {serverCode}
-            </SyntaxHighlighter>
+            <div className="max-h-[500px] overflow-y-auto">
+              <SyntaxHighlighter
+                language="typescript"
+                style={vscDarkPlus}
+                className="rounded-lg"
+              >
+                {serverCode}
+              </SyntaxHighlighter>
+              </div>
           </TabsContent>
         )}
       </Tabs>
     </div>
   );
 }
+

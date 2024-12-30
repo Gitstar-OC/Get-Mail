@@ -139,36 +139,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
-// show proper error message (email already sent)
-
-// import { NextResponse } from "next/server";
-// import { resend } from "@/lib/resend";
-
-// export async function POST(req: Request) {
-//   try {
-//     const { email, subject, html } = await req.json();
-
-//     if (!email || !subject || !html) {
-//       return NextResponse.json(
-//         { error: "Email, subject, and html content are required" },
-//         { status: 400 }
-//       );
-//     }
-
-//     await resend.emails.send({
-//       from: "Get Mail <no-reply@theme-verse.com>",
-//       to: email,
-//       subject,
-//       html,
-//     });
-
-//     return NextResponse.json({ message: "Email sent successfully" });
-//   } catch (error) {
-//     console.error("Error sending email:", error);
-//     return NextResponse.json(
-//       { error: "Failed to send email" },
-//       { status: 500 }
-//     );
-//   }
-// }
