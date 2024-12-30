@@ -69,7 +69,25 @@ export default function Home() {
         </p>
 
         <div className="flex relative z-10 flex-col items-center space-y-4 mt-8">
-          <p>Sign in to perform various actions</p>
+          <p className="font-bold font-sans text-lg relative group overflow-hidden">
+            <span className="relative z-10 block px-4 py-2 text-white">
+              Sign in to get code for each component !
+            </span>
+            {/* Blue background layer - Slide In */}
+            <span
+              className="absolute inset-0 bg-blue-500 
+      transform translate-x-[-100%] 
+      transition-transform duration-500 ease-in-out 
+      group-hover:translate-x-0"
+            />
+            {/* Blue background layer - Slide Out */}
+            <span
+              className="absolute inset-0 bg-blue-500 
+      transform translate-x-0 
+      transition-transform duration-500 ease-in-out 
+      group-hover:translate-x-full"
+            />
+          </p>
           <div className="flex space-x-4">
             <Button variant="outline" className="w-40">
               <SignInButton mode="modal">
